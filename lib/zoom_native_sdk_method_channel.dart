@@ -28,12 +28,14 @@ class MethodChannelZoomNativeSdk extends ZoomNativeSdkPlatform {
   Future<bool?> joinMeting({
     required String meetingNumber,
     required String meetingPassword,
+    required String displayName,
   }) async {
     final version = await methodChannel.invokeMethod<bool>(
       'joinMeeting',
       {
         "meetingNumber": meetingNumber,
         "meetingPassword": meetingPassword,
+        "displayName": displayName,
       },
     );
     debugPrint("MethodChannelZoomNatively-joinMeting -> $version");

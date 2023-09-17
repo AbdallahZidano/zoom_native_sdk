@@ -16,11 +16,12 @@ class ZoomNativeSdk {
   }
 
   Future<bool?> joinMeting(
-      {required String meetingNumber, required String meetingPassword}) {
+      {required String meetingNumber, required String meetingPassword, required String displayName}) {
     debugPrint("ZoomNatively-joinMeting $meetingNumber");
     return ZoomNativeSdkPlatform.instance.joinMeting(
       meetingNumber: meetingNumber,
       meetingPassword: meetingPassword,
+      displayName: displayName,
     );
   }
 }

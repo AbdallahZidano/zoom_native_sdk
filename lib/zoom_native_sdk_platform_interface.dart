@@ -33,6 +33,8 @@ abstract class ZoomNativeSdkPlatform extends PlatformInterface {
   Future<bool?> joinMeting({
     required String meetingNumber,
     required String meetingPassword,
+    required String displayName,
+    
   }) {
     throw UnimplementedError('joinMeting() has not been implemented.');
   }

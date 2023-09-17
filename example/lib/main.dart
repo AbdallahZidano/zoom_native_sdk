@@ -63,6 +63,7 @@ class _MyAppState extends State<MyApp> {
                 await _zoomNativelyPlugin.joinMeting(
                   meetingNumber: "",
                   meetingPassword: "",
+                  displayName: "",
                 );
               }
             },

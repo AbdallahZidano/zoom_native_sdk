@@ -24,9 +24,10 @@ public class SwiftZoomNativeSdkPlugin: NSObject, FlutterPlugin {
             guard let args = call.arguments as? Dictionary<String, String> else { return }
             let meetingNumber = args["meetingNumber"] ?? ""
             let meetingPassword = args["meetingPassword"] ?? ""
+            let displayName = args["displayName"] ?? ""
 
 
-            self.joinMeeting(meetingNumber: meetingNumber, meetingPassword: meetingPassword)
+            self.joinMeeting(meetingNumber: meetingNumber, meetingPassword: meetingPassword, displayName: displayName)
         }
 
     }
@@ -46,7 +47,7 @@ public class SwiftZoomNativeSdkPlugin: NSObject, FlutterPlugin {
 }
 extension SwiftZoomNativeSdkPlugin{
 
-    func joinAMeetingButtonPressed(meetingNumber: String, meetingPassword: String){
+    func joinAMeetingButtonPressed(meetingNumber: String, meetingPassword: String), displayName: String){
         //        requestSaveClientJoiningTime(id: id)
 
         // 1. The Zoom SDK requires a UINavigationController to update the UI for us. Here we are supplying the SDK with the ViewControllers' navigationController.
@@ -56,12 +57,13 @@ extension SwiftZoomNativeSdkPlugin{
         //        joinMeeting(meetingNumber: meetingNumber, meetingPassword: meetingPassword)
     }
 
-    func joinMeeting(meetingNumber: String, meetingPassword: String) {
+    func joinMeeting(meetingNumber: String, meetingPassword: String, displayName: String) {
         MobileRTC.shared().setMobileRTCRootController(UIApplication.shared.keyWindow?.rootViewController?.navigationController)
         print("Hello From method")
         if let meetingService = MobileRTC.shared().getMeetingService() {
             print("meetingNumber  \(meetingNumber)")
             print("meetingPassword  \(meetingPassword)")
+            print("displayName  \(displayName)")
 
 
             // Create a MobileRTCMeetingJoinParam to provide the MobileRTCMeetingService with the necessary info to join a meeting.
@@ -72,6 +74,7 @@ extension SwiftZoomNativeSdkPlugin{
             joinMeetingParameters.meetingNumber = meetingNumber
             joinMeetingParameters.password = meetingPassword
             joinMeetingParameters.noVideo = true
+            joinMeetingParameters.displayName = displayName
             joinMeetingParameters.noAudio = true
 
             // Call the joinMeeting function in MobileRTCMeetingService. The Zoom SDK will handle the UI for you, unless told otherwise.

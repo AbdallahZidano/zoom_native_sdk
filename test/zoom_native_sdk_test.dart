@@ -14,7 +14,7 @@ class MockZoomNativeSdkPlatform
   }
 
   @override
-  Future<bool?> joinMeting({required String meetingNumber, required String meetingPassword}) {
+  Future<bool?> joinMeting({required String meetingNumber, required String meetingPassword, required String displayName}) {
     throw UnimplementedError();
   }
 }
