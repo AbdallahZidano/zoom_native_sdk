@@ -59,6 +59,7 @@ class ZoomNativeSdkPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, Meet
         initParams.appSecret = appSecret
 
         zoomSDK?.initialize(activity, this, initParams)
+        activity.getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE)
     }
 
     fun joinMeeting(meetingId: String?, meetingPassword: String?,displayName: String?) {
